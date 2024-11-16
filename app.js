@@ -39,9 +39,9 @@ app.get("/get-video-details", async (req, res) => {
 
   try {
     // Lấy thông tin video (tiêu đề, mô tả, thẻ tag)
-    const videoInfo = await ytdl.getInfo(videoID);
-    const title = videoInfo.videoDetails.title;
-    const tags = videoInfo.videoDetails.keywords || [];
+    // const videoInfo = await ytdl.getInfo(videoID);
+    // const title = videoInfo.videoDetails.title;
+    // const tags = videoInfo.videoDetails.keywords || [];
 
     // Lấy phụ đề (nếu có)
     const captions = await getSubtitles({
@@ -51,7 +51,7 @@ app.get("/get-video-details", async (req, res) => {
 
     const subtitles = mergeCaptionsToText(captions);
 
-    res.json({ title, tags, subtitles });
+    res.json({ subtitles });
   } catch (error) {
     console.error("Error fetching video details:", error);
     res
