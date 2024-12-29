@@ -56,7 +56,7 @@ app.get("/get-video-details", async (req, res) => {
     console.error("Error fetching video details:", error);
     res
       .status(500)
-      .json({ error: "Failed to fetch video details or subtitles" });
+      .json({ error: JSON.stringify(error) });
   }
 });
 
